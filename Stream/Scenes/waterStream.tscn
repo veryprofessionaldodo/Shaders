@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Materials/waterStreamMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Resources/plane.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/boundsMaterial.tres" type="Material" id=3]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.0
+
+[sub_resource type="CubeMesh" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1.25092, 0, 0, 0, 1.0031, 0, 0, 0, 1.26615, -0.0444948, 0.394108, 0.43066 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="Bounds" type="Spatial" parent="."]
+
+[node name="MeshInstance2" type="MeshInstance" parent="Bounds"]
+transform = Transform( 0.49578, 0.000255199, 0.000621318, -0.000133955, 0.999995, 0.000406406, -0.0023723, -0.00313163, 0.129825, 0.0358585, -0.217625, 0.353042 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Bounds"]
+transform = Transform( 0.2, 0, 0, 0, 0.345, 0, 0, 0, 1.10374, 1.25055, 0.193389, 0.353042 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Bounds"]
+transform = Transform( -4.46525e-08, 0, -1.51253, 0, 0.345, 0, 0.2, 0, -1.79822e-07, -0.0541327, 0.193389, -0.922196 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Bounds"]
+transform = Transform( -4.46525e-08, 0, -1.51253, 0, 0.345, 0, 0.2, 0, -1.79822e-07, -0.0661667, 0.193389, 1.6319 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Bounds"]
+transform = Transform( 0.2, 0, 0, 0, 0.345, 0, 0, 0, 1.10374, -1.3797, 0.193389, 0.353042 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
+[node name="plane" type="MeshInstance" parent="."]
+transform = Transform( 1.15829, 0, 0, 0, 1.0031, 0, 0, 0, 1.26615, 0, 0, 7.44324 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
