@@ -1,6 +1,18 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
 
 [ext_resource path="res://Shaders/waterStream.shader" type="Shader" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=3]
+period = 132.7
+persistence = 0.563
+lacunarity = 1.7
+
+[sub_resource type="NoiseTexture" id=4]
+width = 1024
+height = 1024
+seamless = true
+bump_strength = 5.1
+noise = SubResource( 3 )
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 36.1
@@ -15,6 +27,8 @@ noise = SubResource( 1 )
 shader = ExtResource( 1 )
 shader_param/margin = 0.1
 shader_param/stream_speed = 0.2
-shader_param/foamColor = Color( 1, 1, 1, 1 )
+shader_param/foamColor = Color( 1, 0.98, 0.98, 1 )
 shader_param/waterColor = Color( 0.486275, 0.494118, 0.984314, 1 )
+shader_param/distortionIntensity = Vector2( 0.1, 0.3 )
 shader_param/ripples = SubResource( 2 )
+shader_param/offsetUv = SubResource( 4 )

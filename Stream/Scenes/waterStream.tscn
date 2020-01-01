@@ -29,7 +29,12 @@ material/0 = ExtResource( 1 )
 [node name="Bounds" type="Spatial" parent="."]
 
 [node name="MeshInstance2" type="MeshInstance" parent="Bounds"]
-transform = Transform( 0.49578, 0.000255199, 0.000621318, -0.000133955, 0.999995, 0.000406406, -0.0023723, -0.00313163, 0.129825, 0.0358585, -0.217625, 0.353042 )
+transform = Transform( 0.49578, 0.000255199, 0.000621318, -3.49945e-05, 0.26124, 0.00010617, -0.00360951, -0.00476485, 0.197532, 0.0358585, 0.240566, 0.353042 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Bounds"]
+transform = Transform( 0.49578, 0.000255199, 0.000621318, -0.000129125, 0.963939, 0.000391753, -0.0121905, -0.0160925, 0.667132, 0.766927, -0.655451, 0.507579 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
