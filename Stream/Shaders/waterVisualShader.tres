@@ -1,0 +1,60 @@
+[gd_resource type="VisualShader" load_steps=7 format=2]
+
+[sub_resource type="VisualShaderNodeInput" id=1]
+input_name = "inv_camera"
+
+[sub_resource type="VisualShaderNodeInput" id=2]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id=3]
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "depth_texture"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=5]
+uniform_name = "FoamColor"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=6]
+uniform_name = "WaterColor"
+
+[resource]
+code = "shader_type spatial;
+uniform vec4 FoamColor : hint_color;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:6
+	vec3 n_out6p0;
+	float n_out6p1;
+	n_out6p0 = FoamColor.rgb;
+	n_out6p1 = FoamColor.a;
+
+// Output:0
+	ALBEDO = n_out6p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+nodes/fragment/2/node = SubResource( 1 )
+nodes/fragment/2/position = Vector2( -360, 100 )
+nodes/fragment/3/node = SubResource( 2 )
+nodes/fragment/3/position = Vector2( -408, 272 )
+nodes/fragment/4/node = SubResource( 3 )
+nodes/fragment/4/position = Vector2( -160, 120 )
+nodes/fragment/5/node = SubResource( 4 )
+nodes/fragment/5/position = Vector2( -180, 320 )
+nodes/fragment/6/node = SubResource( 5 )
+nodes/fragment/6/position = Vector2( -748, -51 )
+nodes/fragment/7/node = SubResource( 6 )
+nodes/fragment/7/position = Vector2( -748, 68 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 4, 1, 2, 0, 4, 0, 6, 0, 0, 0 )

@@ -2,14 +2,14 @@
 
 [ext_resource path="res://Shaders/waterStream.shader" type="Shader" id=1]
 
-[sub_resource type="OpenSimplexNoise" id=2]
+[sub_resource type="OpenSimplexNoise" id=1]
 period = 36.1
 
-[sub_resource type="NoiseTexture" id=3]
+[sub_resource type="NoiseTexture" id=2]
 width = 1024
 height = 1024
 seamless = true
-noise = SubResource( 2 )
+noise = SubResource( 1 )
 
 [resource]
 shader = ExtResource( 1 )
@@ -17,4 +17,4 @@ shader_param/margin = 0.1
 shader_param/stream_speed = 0.2
 shader_param/foamColor = Color( 1, 1, 1, 1 )
 shader_param/waterColor = Color( 0.486275, 0.494118, 0.984314, 1 )
-shader_param/ripples = SubResource( 3 )
+shader_param/ripples = SubResource( 2 )

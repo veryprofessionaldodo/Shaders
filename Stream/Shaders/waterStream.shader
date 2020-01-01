@@ -1,8 +1,9 @@
 shader_type spatial;
 
-render_mode cull_disabled;
+//render_mode cull_disabled;
 render_mode world_vertex_coords;
 //render_mode depth_test_disable;
+render_mode unshaded;
 
 uniform sampler2D ripples;
 uniform float margin = 0.1;
@@ -22,19 +23,19 @@ float linearize(float depth) {
 
 void fragment() {
 	// Test UVs
-	ALBEDO = vec3(UV, 1.0);
-	
-	// Margins of the UVs, needs to be changed for the actual margins of the object
-	if (UV.x < margin || UV.y > 1.0 - margin || UV.x > 1.0 - margin || UV.y < margin) {
-		ALBEDO += texture(ripples, vec2(UV.x, UV.y + TIME * stream_speed)).rgb;
-	}
 	
 	float zdepth = linearize(texture(DEPTH_TEXTURE, SCREEN_UV).x);
 	float zpos = linearize(FRAGCOORD.z);
-	float diff = 1.0-(zdepth-zpos);
-	ALBEDO = vec3(ceil(diff));
+	vec3 intersection = vec3(1.0-(zdepth-zpos)/2.0);
+	intersection *= texture(ripples, vec2(UV.x, UV.y + TIME * stream_speed)).rgb;
 	
-	//ALBEDO = mix(waterColor, foamColor, round(diff)).rgb;
+	if (intersection.x > 0.0) {
+		ALBEDO *= texture(ripples, vec2(UV.x, UV.y + TIME * stream_speed)).rgb;
+	}
+	//ALBEDO = vec3(FRAGCOORD.x);
+	
+	
+	ALBEDO = mix(waterColor, foamColor, intersection.x).rgr;
 	//ALBEDO = vec3(texture(DEPTH_TEXTURE, SCREEN_UV).r);
 	
 } 
