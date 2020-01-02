@@ -42,26 +42,27 @@ void fragment() {
 	// Distort based on intensity
 	textureOffset *= distortionIntensity;
 	// Banding effect
-	textureOffset = bandEffect(textureOffset, 10.0);
+	//textureOffset = bandEffect(textureOffset, 10.0);
 	
 	// Get depth information	
 	float zdepth = linearize(texture(DEPTH_TEXTURE, SCREEN_UV).x);
 	float zpos = linearize(FRAGCOORD.z);
-	vec3 intersection = vec3(1.0-(zdepth-zpos)/2.0);
+	float intersection = 1.0-(zdepth-zpos)/2.0;
 	
 	// Base color is depth information
-	vec3 color = intersection;
+	vec3 color = mix(vec3(waterColor.rgb), vec3(foamColor.r,foamColor.g,foamColor.b), smoothstep(0.0,0.5,intersection)).rgb;
 	
 	// Add ripples	
-	vec3 ripplesColor = texture(ripples, vec2(UV.x + textureOffset.x, UV.y + TIME * stream_speed + textureOffset.y)).rgb;
+	color *= texture(ripples, vec2(UV.x + textureOffset.x, UV.y + TIME * stream_speed + textureOffset.y)).rgb;
 	// Banding effect
 	//ripplesColor = bandEffect(ripplesColor, 10.0);
-	color *= ripplesColor.rgb;
+	//color *= ripplesColor.rgb;
+	//color = mix(vec3(waterColor.rgb), vec3(foamColor.r,foamColor.g,foamColor.b), step(0.5,color)).rgb;
 	
 	// Distort 
-	color += texture(offsetUv, vec2(UV.x + textureOffset.x , UV.y + TIME * textureOffset.y)).rgb;
+	//color += texture(offsetUv, vec2(UV.x + textureOffset.x , UV.y + TIME * textureOffset.y)).rgb;
 	ALBEDO = color;
-	ALBEDO = mix(vec3(waterColor.rgb), vec3(foamColor.r,foamColor.g,foamColor.b), color).rgb;
+	
 	//ALBEDO = mix(vec3(waterColor.rgb), vec3(foamColor.rgb), color).rgb;
 	//ALBEDO = vec3(texture(DEPTH_TEXTURE, SCREEN_UV).r);
 	
