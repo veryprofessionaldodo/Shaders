@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/obstaclesRocks.obj-75bbfb0b6ca5d9ae0dad1e6381d75e18.mesh"
+
+[deps]
+
+files=[ "res://.import/obstaclesRocks.obj-75bbfb0b6ca5d9ae0dad1e6381d75e18.mesh" ]
+
+source_file="res://Resources/obstaclesRocks.obj"
+dest_files=[ "res://.import/obstaclesRocks.obj-75bbfb0b6ca5d9ae0dad1e6381d75e18.mesh", "res://.import/obstaclesRocks.obj-75bbfb0b6ca5d9ae0dad1e6381d75e18.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

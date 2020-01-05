@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ShaderTest"
+run/main_scene="res://Scenes/test_water.tscn"
 config/icon="res://Resources/icon.png"
 
 [rendering]

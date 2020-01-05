@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Shaders/waterfall.shader" type="Shader" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/scale = Vector3( 0, 0, 0 )
+script = SubResource( 1 )
